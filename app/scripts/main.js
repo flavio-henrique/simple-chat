@@ -1,16 +1,18 @@
 const url = 'https://chatty.kubernetes.doodle-test.com/api/chatty/v1.0?token=4Gnep8UgMjdC';
-
+const author = 'Flávio';
 function sendMessage() {
     const input = document.querySelector('#input-message');
-    const value = input.value;
+    const message = input.value;
     fetch(url, {
         headers: { 'Content-Type': 'application/json; charset=utf-8' },
         method: 'POST',
-        body: JSON.stringify({ message: value, author: 'Flávio' })
+        body: JSON.stringify({ message, author })
     }).then(() => {
         input.value = '';
         loadMessages();
     });
+
+
 }
 
 function loadMessages() {
@@ -19,16 +21,18 @@ function loadMessages() {
             .then((messages) => {
                 const messageContainer = document.querySelector('#message-container');
                 messageContainer.innerHTML = messages.map(element => {
+                    const isMessageOwner = element.author === author;
                     return `
-                        <div class="row">
+                        <div class="row ${isMessageOwner ? 'message-out' : 'message-in'}">
                             <div>
-                                <span>${element.author}</span>
-                                <span>${element.message}</span>
-                                <span>${element.timestamp}</span>
+                                ${isMessageOwner ? `` : `<span class="author">${element.author}</span>`}
+                                <span class="message">${element.message}</span>
+                                <span class="timestamp">${element.timestamp}</span>
                             </div>
                         </div>
                     `;
                 }).join('');
+                messageContainer.scrollTo(0, messageContainer.scrollHeight);
             }));
 }
 

@@ -11,6 +11,14 @@ body {
     text-align: center;
 }
 
+.box-input .input-item {
+    display: inline-flex;
+}
+
+.box-input .input-item, .box-input .submit-item {
+    margin: 5px 0;
+}
+
 .flex {
     display: flex;
 }
@@ -23,8 +31,20 @@ body {
     flex-grow: 1;
 }
 
+.message-out {
+    text-align: right;
+}
+
+.message-out > div {
+    background: #FCF6C4;
+}
+
+.message-in {
+    text-align: left;
+}
+
 #message-container {
-    height: 90vh;
+    height: 88vh;
     overflow-y: auto;
 }
 
@@ -35,16 +55,20 @@ body {
     padding: 12px;
 }
 
+#message-container .row {
+    margin: 0 10px;
+}
+
 #message-container .row > div > span {
     display: block;
 }
 
-#message-container .row > div > span:first-child, #message-container .row > div > span:last-child {
+#message-container .row > div > span.author, #message-container .row > div > span.timestamp{
     color: #949494;
     font-size: 11px;
 }
 
-#message-container .row > div > span:not(:first-child):not(:last-child)  {
+#message-container .row > div > span.message {
     margin: 10px 0;
 }
 
