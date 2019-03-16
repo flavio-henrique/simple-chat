@@ -1,0 +1,71 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+.box-input {
+    background-color: #3898D4;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex > .input-item {
+    flex-grow: 14;
+}
+
+.flex > .submit-item {
+    flex-grow: 1;
+}
+
+#message-container {
+    height: 90vh;
+    overflow-y: auto;
+}
+
+#message-container .row > div {
+    border: 1px solid #dedede;
+    margin: 5px 0;
+    display: inline-block;
+    padding: 12px;
+}
+
+#message-container .row > div > span {
+    display: block;
+}
+
+#message-container .row > div > span:first-child, #message-container .row > div > span:last-child {
+    color: #949494;
+    font-size: 11px;
+}
+
+#message-container .row > div > span:not(:first-child):not(:last-child)  {
+    margin: 10px 0;
+}
+
+#input-message {
+    height: 30px;
+    width: 270px;
+    border: none;
+    padding: 0 10px;
+    width: 100%;
+}
+
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.submit {
+    height: 30px;
+    background: #FF8671;
+    border: none;
+    color: white;
+    padding: 0 10px;
+    width: 100%;
+}

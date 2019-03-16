@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Chat</title>
+
+  <link rel="stylesheet" href="styles/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+
+<body>
+  <div id="message-container" class="container"></div>
+  <div class="box-input">
+    <div class="container flex">
+      <div class="input-item">
+        <input placeholder="Message" type="text" id="input-message">
+      </div>
+      <div class="submit-item">
+        <button class="submit" onclick="sendMessage()" type="button">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/main.js"></script>
+
+</body>
+
+</html>
