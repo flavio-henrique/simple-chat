@@ -1,0 +1,23 @@
+{
+  "name": "simple-chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server ./app/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flavio-henrique/simple-chat.git"
+  },
+  "author": "Flávio Henrique",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/flavio-henrique/simple-chat/issues"
+  },
+  "homepage": "https://github.com/flavio-henrique/simple-chat#readme",
+  "dependencies": {
+    "http-server": "^0.11.1"
+  }
+}
