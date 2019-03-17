@@ -1,7 +1,8 @@
 
 const url = 'https://chatty.kubernetes.doodle-test.com/api/chatty/v1.0?token=4Gnep8UgMjdC';
 const author = 'Flávio';
-function sendMessage() {
+function sendMessage(submitButtonElement) {
+    submitButtonElement.disabled = true;
     const input = document.querySelector('#input-message');
     const message = input.value;
     fetch(url, {
@@ -10,6 +11,7 @@ function sendMessage() {
         body: JSON.stringify({ message, author })
     }).then(() => {
         input.value = '';
+        submitButtonElement.disabled = false;
         loadMessages();
     });
 
@@ -28,7 +30,7 @@ function loadMessages() {
                             <div>
                                 ${isMessageOwner ? `` : `<span class="author">${element.author}</span>`}
                                 <span class="message">${element.message}</span>
-                                <span class="timestamp">${moment(new Date(element.timestamp)).format('d MMMM  YYYY HH:mm')}</span>
+                                <span class="timestamp">${moment(new Date(element.timestamp)).format('DD MMMM  YYYY HH:mm')}</span>
                             </div>
                         </div>
                     `;

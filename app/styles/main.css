@@ -1,7 +1,9 @@
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
+    background-image: url('../images/background-chat.png');
 }
+
 .box-input {
     background-color: #3898D4;
     position: fixed;
@@ -22,11 +24,11 @@ body {
     display: flex;
 }
 
-.flex > .input-item {
+.flex>.input-item {
     flex-grow: 20;
 }
 
-.flex > .submit-item {
+.flex>.submit-item {
     flex-grow: 1;
     margin-left: 10px;
 }
@@ -40,7 +42,7 @@ body {
     text-align: right;
 }
 
-.message-out > div {
+.message-out>div {
     background: #FCF6C4;
 }
 
@@ -48,28 +50,48 @@ body {
     text-align: left;
 }
 
+.message-in>div {
+    background-color: white;
+}
+
 #message-container {
-    height: 86vh;
+    height: calc(100vh - 63px);
     overflow-y: auto;
 }
 
-#message-container .row > div {
-    border: 1px solid #dedede;
+#message-container::-webkit-scrollbar-track
+{
+	background-color: #F5F5F5;
+}
+
+#message-container::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: #F5F5F5;
+}
+
+#message-container::-webkit-scrollbar-thumb
+{
+	background-color: #a5a5a5;
+}
+
+#message-container .row>div {
+    border: 1px solid #c5c5c5;
     margin: 5px 0;
     display: inline-block;
     padding: 12px;
 }
 
-#message-container .row > div > span {
+#message-container .row>div>span {
     display: block;
 }
 
-#message-container .row > div > span.author, #message-container .row > div > span.timestamp{
+#message-container .row>div>span.author, #message-container .row>div>span.timestamp {
     color: #949494;
     font-size: 11px;
 }
 
-#message-container .row > div > span.message {
+#message-container .row>div>span.message {
     margin: 10px 0;
 }
 
@@ -96,4 +118,9 @@ body {
     padding: 0 10px;
     width: 100%;
     border-radius: 3px;
+}
+
+.submit:disabled {
+    background-color: #e49c90;
+    cursor: not-allowed;
 }
