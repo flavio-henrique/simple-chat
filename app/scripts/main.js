@@ -1,3 +1,4 @@
+
 const url = 'https://chatty.kubernetes.doodle-test.com/api/chatty/v1.0?token=4Gnep8UgMjdC';
 const author = 'Flávio';
 function sendMessage() {
@@ -27,7 +28,7 @@ function loadMessages() {
                             <div>
                                 ${isMessageOwner ? `` : `<span class="author">${element.author}</span>`}
                                 <span class="message">${element.message}</span>
-                                <span class="timestamp">${element.timestamp}</span>
+                                <span class="timestamp">${moment(new Date(element.timestamp)).format('d MMMM  YYYY HH:mm')}</span>
                             </div>
                         </div>
                     `;
