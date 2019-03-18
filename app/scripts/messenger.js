@@ -9,17 +9,6 @@ export class Messenger {
         this.addclickEvent(this.submitButtonElement);
     }
 
-    addclickEvent(submitButtonElement) {
-        if (submitButtonElement && submitButtonElement.addEventListener) {
-            submitButtonElement.addEventListener('click', () => {
-                this.sendMessage();
-            }, false);
-        }
-        else {
-            throw new Error(`Element with selector "#${this.submitButtonId}" was not found or not appropriate element type`);
-        }
-    }
-
     sendMessage = () => {
         this.submitButtonElement.disabled = true;
         const input = document.querySelector('#input-message');
@@ -32,7 +21,7 @@ export class Messenger {
             input.value = '';
             this.submitButtonElement.disabled = false;
             this.loadMessages();
-        });
+        }).catch(() => { throw new Error('Error to send the message'); });
     }
 
     loadMessages() {
@@ -53,6 +42,17 @@ export class Messenger {
                         `;
                 }).join('');
                 messageContainer.scrollTo(0, messageContainer.scrollHeight);
-            });
+            }).catch(() => { throw new Error('Error to load the messages'); });
+    }
+    
+    addclickEvent(submitButtonElement) {
+        if (submitButtonElement && submitButtonElement.addEventListener) {
+            submitButtonElement.addEventListener('click', () => {
+                this.sendMessage();
+            }, false);
+        }
+        else {
+            throw new Error(`Element with selector "#${this.submitButtonId}" was not found or not appropriate element type`);
+        }
     }
 };

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "http-server ./app/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,15 @@
   },
   "homepage": "https://github.com/flavio-henrique/simple-chat#readme",
   "dependencies": {
-    "http-server": "^0.11.1"
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "http-server": "^0.11.1",
+    "moment": "^2.24.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.3.4",
+    "@types/jest": "^24.0.11",
+    "babel-jest": "^24.5.0",
+    "babel-polyfill": "^6.26.0",
+    "jest": "^24.5.0"
   }
 }
