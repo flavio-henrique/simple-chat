@@ -1,11 +1,15 @@
 export class Messenger {
-    constructor(url, author, fetch, moment, submitButtonId) {
+    constructor(url, author, fetch, moment, submitButtonId, messageContainerId) {
         this.url = url;
         this.author = author;
         this.fetch = fetch;
         this.moment = moment;
         this.submitButtonId = submitButtonId;
         this.submitButtonElement = document.getElementById(this.submitButtonId);
+        this.messageContainerElement = document.getElementById(messageContainerId);
+        if (!this.messageContainerElement) {
+            throw new Error(`Element with selector "#${messageContainerId}" was not found.`);
+        }
         this.addclickEvent(this.submitButtonElement);
     }
 
@@ -13,7 +17,7 @@ export class Messenger {
         this.submitButtonElement.disabled = true;
         const input = document.querySelector('#input-message');
         const message = input.value;
-        this.fetch(this.url, {
+        return this.fetch(this.url, {
             headers: { 'Content-Type': 'application/json; charset=utf-8' },
             method: 'POST',
             body: JSON.stringify({ message, author: this.author })
@@ -21,15 +25,14 @@ export class Messenger {
             input.value = '';
             this.submitButtonElement.disabled = false;
             this.loadMessages();
-        }).catch(() => { throw new Error('Error to send the message'); });
+        }).catch((errorResponse) => { throw new Error('Error to send the message', errorResponse); });
     }
 
     loadMessages() {
-        this.fetch(this.url)
+        return this.fetch(this.url)
             .then((response) => response.json())
             .then((messages) => {
-                const messageContainer = document.querySelector('#message-container');
-                messageContainer.innerHTML = messages.map(element => {
+                this.messageContainerElement.innerHTML = messages.map(element => {
                     const isMessageOwner = element.author === this.author;
                     return `
                             <div class="row ${isMessageOwner ? 'message-out' : 'message-in'}">
@@ -41,10 +44,10 @@ export class Messenger {
                             </div>
                         `;
                 }).join('');
-                messageContainer.scrollTo(0, messageContainer.scrollHeight);
-            }).catch(() => { throw new Error('Error to load the messages'); });
+                this.messageContainerElement.scrollTo(0, this.messageContainerElement.scrollHeight);
+            }).catch((errorResponse) => { throw new Error('Error to load the messages', errorResponse); });
     }
-    
+
     addclickEvent(submitButtonElement) {
         if (submitButtonElement && submitButtonElement.addEventListener) {
             submitButtonElement.addEventListener('click', () => {
