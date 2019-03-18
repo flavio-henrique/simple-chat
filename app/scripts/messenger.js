@@ -15,7 +15,7 @@ export class Messenger {
 
     sendMessage = () => {
         this.submitButtonElement.disabled = true;
-        const input = document.querySelector('#input-message');
+        const input = document.getElementById('input-message');
         const message = input.value;
         return this.fetch(this.url, {
             headers: { 'Content-Type': 'application/json; charset=utf-8' },

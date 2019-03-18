@@ -6,6 +6,5 @@ const author = 'Flávio';
 const messageContainerId = 'message-container';
 
 const messenger = new Messenger(url, author, fetch.bind(window), moment, submitButtonId, messageContainerId);
-debugger
-const x = messenger.loadMessages();
+messenger.loadMessages();
 
